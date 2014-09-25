@@ -45,6 +45,8 @@ class PagesController extends AppController {
  */
 	public $uses = [];
 
+	public $theme = "KC";
+
 /**
  * Displays a view
  *

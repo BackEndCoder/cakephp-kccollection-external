@@ -1,227 +1,352 @@
-<?php
-/**
- *
- * PHP 5
- *
- * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- *
- * Licensed under The MIT License
- * For full copyright and license information, please see the LICENSE.txt
- * Redistributions of files must retain the above copyright notice.
- *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
- */
+<section id="mainslider" class="sixteen columns flexslider slideshow row">
+	<ul class="slides">
+		<li><a href="/"><img src="//cdn.shopify.com/s/files/1/0113/1382/t/5/assets/mainslider_img_1.png?155" alt="/"/></a></li>
+		<li><a href="/"><img src="//cdn.shopify.com/s/files/1/0113/1382/t/5/assets/mainslider_img_2.png?155" alt="/"/></a></li>
+	</ul>
+</section>
 
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
-App::uses('Debugger', 'Utility');
-?>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<p>
-	<a href="http://cakephp.org/changelogs/<?php echo Configure::version(); ?>"><?php echo __d('cake_dev', 'Read the changelog'); ?> </a>
-</p>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-	<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-	1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-	2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-</p>
-<p>
-<?php
-	if (version_compare(PHP_VERSION, '5.4.0', '>=')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your version of PHP is 5.4.0 or higher.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.4.0 or higher to use this app template.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-	<?php
-		if (is_writable(TMP)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your tmp directory is writable.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$settings = Cache::settings();
-		if (!empty($settings)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit APP/Config/core.php ', '<em>'. $settings['engine'] . 'Engine</em>');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in APP/Config/core.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$filePresent = null;
-		if (file_exists(APP . 'Config' . DS . 'database.php')):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your database configuration file is present.');
-				$filePresent = true;
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your database configuration file is NOT present.');
-				echo '<br/>';
-				echo __d('cake_dev', 'Rename APP/Config/database.php.default to APP/Config/database.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-		$errorMsg = $connectionError->getMessage();
-		if (method_exists($connectionError, 'getAttributes')) {
-			$attributes = $connectionError->getAttributes();
-			if (isset($errorMsg['message'])) {
-				$errorMsg .= '<br />' . $attributes['message'];
-			}
-		}
-	}
-?>
-<p>
-	<?php
-		if ($connected && $connected->isConnected()):
-			echo '<span class="notice success">';
-	 			echo __d('cake_dev', 'Cake is able to connect to the database.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Cake is NOT able to connect to the database.');
-				echo '<br /><br />';
-				echo $errorMsg;
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php endif; ?>
-<?php
-	App::uses('Validation', 'Utility');
-	if (!Validation::alphaNumeric('cakephp')) {
-		echo '<p><span class="notice">';
-			echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-		echo '</span></p>';
-	}
-?>
+<section class="widgets row">
+			<div class="widget fullwidthimg one-third column">
+			<a href="/collections/knitted-fur"><h6>Knitted Fur</h6></a>
+			<a class="highlight align" href="/collections/knitted-fur"><img src="//cdn.shopify.com/s/files/1/0113/1382/collections/Untitled_-_4_large.jpg?v=1351347275" alt="Knitted Fur" /></a>
+		</div>
+	
+		
+			<div class="widget fullwidthimg one-third column">
+		
+			
+			<a href="/collections/quirky"><h6>Quirky</h6></a>
+			
+			<a class="highlight align" href="/collections/quirky"><img src="//cdn.shopify.com/s/files/1/0113/1382/collections/quirky_1_large.jpg?v=1341422373" alt="Quirky" /></a>
+		</div>
+	
+		
+			<div class="widget fullwidthimg one-third column">
+		
+			
+			<a href="/collections/jackets-coats"><h6>Jackets</h6></a>
+			
+			<a class="highlight align" href="/collections/jackets-coats"><img src="//cdn.shopify.com/s/files/1/0113/1382/collections/jackets_1_large.jpg?v=1341422355" alt="Jackets &amp; Coats" /></a>
+		</div>
+	
+</section>
 
-<p>
-	<?php
-		if (CakePlugin::loaded('DebugKit')):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'DebugKit plugin is present');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
-				echo '<br/>';
-				echo __d('cake_dev', 'You can install it from %s', $this->Html->link('github', 'https://github.com/cakephp/debug_kit'));
-			echo '</span>';
-		endif;
-	?>
-</p>
 
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, edit: APP/View/Pages/home.ctp.<br />
-To change its layout, edit: APP/View/Layouts/default.ctp.<br />
-You can also add some CSS styles for your pages at: APP/webroot/css.');
-?>
-</p>
 
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-		echo $this->Html->link(
-			sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-			'http://book.cakephp.org/2.0/en/',
-			['target' => '_blank', 'escape' => false]
-		);
-	?>
-</p>
-<p>
-	<?php
-		echo $this->Html->link(
-			__d('cake_dev', 'The 15 min Blog Tutorial'),
-			'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-			['target' => '_blank', 'escape' => false]
-		);
-	?>
-</p>
 
-<h3><?php echo __d('cake_dev', 'Official Plugins'); ?></h3>
-<p>
-<ul>
-	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
-		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
-	</li>
-	<li>
-		<?php echo $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
-		<?php echo __d('cake_dev', 'contains various localized validation classes and translations for specific countries'); ?>
-	</li>
-</ul>
-</p>
 
-<h3><?php echo __d('cake_dev', 'More about Cake'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
 
-<ul>
-	<li><a href="http://cakefoundation.org/"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
-	<li><a href="http://www.cakephp.org"><?php echo __d('cake_dev', 'CakePHP'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api.cakephp.org/"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://plugins.cakephp.org"><?php echo __d('cake_dev', 'CakePHP plugins repo'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
-	<li><a href="https://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'For the Development of CakePHP Git repository, Downloads'); ?></li></ul></li>
-	<li><a href="https://cakephp.lighthouseapp.com/"><?php echo __d('cake_dev', 'CakePHP Lighthouse'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Tickets, Wiki pages, Roadmap'); ?></li></ul></li>
-</ul>
+
+
+<section class="widgets row">
+	<div class="widget productlist">
+		
+		
+		
+		
+		
+			
+			<a href="/collections/hats"><h6 class="sixteen columns">Hats</h6></a>
+			
+		
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/hats/products/coyote-headband" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/headband_coyote_large.jpg?v=1341822211" alt="Coyote Headband" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/hats/products/coyote-headband">Coyote Headband</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/hats/products/fox-headband" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/headband_fox_large.jpg?v=1341824463" alt="Fox Headband" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/hats/products/fox-headband">Fox Headband</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/hats/products/universal-systemic-throughput" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/zhivago_plain1_large.jpg?v=1338223309" alt="Zhivago Plain Raccoon" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/hats/products/universal-systemic-throughput">Zhivago Plain Raccoon</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns last">
+	
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a class="imgswitch" href="/collections/hats/products/zhivago-silver-fox-hat">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/moscow_hat_silver_large.jpg?v=1338214577" alt="Zhivago Silver Fox" />
+				<div class= "altimgcont">
+					<img class="altimg" src="//cdn.shopify.com/s/files/1/0113/1382/products/moscow_hat_silver2_large.jpg?v=1338214577" alt="Zhivago Silver Fox" />
+				</div>
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/hats/products/zhivago-silver-fox-hat">Zhivago Silver Fox</a></p>
+   
+	  
+	  
+</div>
+		
+		
+	</div>
+</section>
+
+
+<section class="widgets row">
+	<div class="widget productlist">
+		
+		
+		
+		
+		
+			
+			<a href="/collections/jackets-coats"><h6 class="sixteen columns">Jackets & Coats</h6></a>
+			
+		
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/jackets-coats/products/boarder-coat" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/Boarder-coat-black-nappa-goatskin_large.jpg?v=1341470876" alt="Boarder Coat" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/jackets-coats/products/boarder-coat">Boarder Coat</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/jackets-coats/products/box-coat" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/box-coat_large.jpg?v=1341471250" alt="Box Coat" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/jackets-coats/products/box-coat">Box Coat</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns">
+	
+	
+		<div class="columnfluff"></div>
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a class="imgswitch" href="/collections/jackets-coats/products/button-tweed-jacket">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/button_jacket1_large.jpg?v=1338292792" alt="Button Tweed Jacket" />
+				<div class= "altimgcont">
+					<img class="altimg" src="//cdn.shopify.com/s/files/1/0113/1382/products/button_jacket2_large.jpg?v=1338292792" alt="Button Tweed Jacket" />
+				</div>
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/jackets-coats/products/button-tweed-jacket">Button Tweed Jacket</a></p>
+   
+	  
+	  
+</div>
+		
+			
+
+
+
+	<div class="product four columns last">
+	
+	
+
+	<div class="imgcont loadingimg">
+		
+			<a href="/collections/jackets-coats/products/crop-jacket" class="highlight">
+				<img src="//cdn.shopify.com/s/files/1/0113/1382/products/crop_jacket_large.jpg?v=1338294394" alt="Crop Jacket" />
+			</a>
+		
+		
+	</div>
+
+	<p class="title"><a href="/collections/jackets-coats/products/crop-jacket">Crop Jacket</a></p>
+   
+	  
+	  
+</div>
+		
+		
+	</div>
+</section>
+
+
+
+<section class="widgets row">
+	
+	<div class="pagesnippetwidget widget one-third column">
+
+	<a href="/pages/about-us"><h6>About Us</h6></a>
+	
+	
+  The KC Collection has been producing
+outer wear and accessories for nearly 20 years. Our forte is that we design and
+manufacture many of our own pieces, supplying both to the trade and the pu...
+   <br /><a href="/pages/about-us"> more &rarr;</a>
+
+</div>
+	
+	
+	<div class="pagesnippetwidget widget one-third column">
+
+	<a href="/pages/garment-care"><h6>Garment Care</h6></a>
+	
+	
+
+
+  CLEANING.
+Our recommendation
+for all skin products is Specialist Dry
+Clean Only.&nbsp;Do not attempt to treat stains with cold water or chemical cleaning agents as this can cause permane...
+   <br /><a href="/pages/garment-care"> more &rarr;</a>
+
+</div>
+	
+	
+	
+<div class="blogwidget flexslider widget one-third column">
+	<ul class="slides">
+		
+		<li>
+			<a href="/blogs/recipies/6256236-russian-blinis"><h6>Russian Blinis</h6></a>
+			<div class="desc">Since our Russian style Zhivago hats are so popular, we thought this delicious recipe might be in keeping. Wear hat while eating! Use your favourite pancake mix or try this beauty.
+A yummy summer ...</div>
+			<span><a href="/blogs/recipies/6256236-russian-blinis">View Recipie &rarr;</a></span>
+		</li>
+		
+		<li>
+			<a href="/blogs/recipies/6256232-rum-pie"><h6>Rum Pie</h6></a>
+			<div class="desc">This has little to do with Food Chain food,  but it’s a serious hit when we serve it at dinner parties.&nbsp;
+Absolutely delicious and the men will love it , they need spoiling!
+
+Serves 4 – 6
+
+...</div>
+			<span><a href="/blogs/recipies/6256232-rum-pie">View Recipie &rarr;</a></span>
+		</li>
+		
+		<li>
+			<a href="/blogs/recipies/6256222-rabbit-fricassee"><h6>Rabbit Fricassee</h6></a>
+			<div class="desc">&nbsp;Delicious rabbit fricassee, to serve 4, cooking time just 1 hour. Fabulous wine and mushroom rabbit dish.
+
+</div>
+			<span><a href="/blogs/recipies/6256222-rabbit-fricassee">View Recipie &rarr;</a></span>
+		</li>
+		
+		<li>
+			<a href="/blogs/recipies/4745542-lamb-goulash"><h6>Lamb Goulash</h6></a>
+			<div class="desc">This one was too good to miss. 
+
+Borrowed from the Reverent John Eley, it’s a traditional Lamb recipe. He
+ pinched it from his mother, who was given it by a Hungarian blacksmiths
+ wife, after t...</div>
+			<span><a href="/blogs/recipies/4745542-lamb-goulash">View Recipie &rarr;</a></span>
+		</li>
+		
+	</ul>
+
+</div>
+</section>
